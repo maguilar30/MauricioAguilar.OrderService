@@ -8,6 +8,6 @@ namespace MauricioAguilar.OrderService.Repositories
 
         Task<Order?> GetByIdAsync(int id);
 
-        Task AddAsync(Order order);
+        Task AddAsync(Order order, CancellationToken cancellationToken);
     }
 }

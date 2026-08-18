@@ -22,7 +22,8 @@ builder.Services.AddDbContext<OrderDbContext>(options =>
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddSingleton<IMessagePublisher, ActiveMqPublisher>();
+builder.Services.AddSingleton<IActiveMqPublisher, ActiveMqPublisher>();
+builder.Services.AddHostedService<OutboxPublisherWorker>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();

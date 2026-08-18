@@ -8,9 +8,9 @@ namespace MauricioAguilar.OrderService.Services
     public class OrderService : IOrderService
     {
         public IOrderRepository _repository;
-        private readonly Messaging.IMessagePublisher _publisher;
+        private readonly Messaging.IActiveMqPublisher _publisher;
 
-        public OrderService(IOrderRepository repository, Messaging.IMessagePublisher publisher)
+        public OrderService(IOrderRepository repository, Messaging.IActiveMqPublisher publisher)
         {
             _repository = repository;
             _publisher = publisher;
@@ -61,17 +61,7 @@ namespace MauricioAguilar.OrderService.Services
                 - order.Discount;
 
 
-            await _repository.AddAsync(order);
-
-            // publish an event to ActiveMQ
-            try
-            {
-                await _publisher.PublishOrderCreatedAsync(order);
-            }
-            catch
-            {
-                // swallow to avoid breaking order creation on messaging failures
-            }
+            await _repository.AddAsync(order, cancellationToken);
 
             return order;
         }

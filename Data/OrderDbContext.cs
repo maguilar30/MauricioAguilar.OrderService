@@ -11,9 +11,14 @@ namespace MauricioAguilar.Product.Service.Data
 
         public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
+        public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OutboxMessage>()
+            .ToTable("OutboxMessages");
 
             modelBuilder.Entity<Order>()
                 .HasMany(x => x.Items)
