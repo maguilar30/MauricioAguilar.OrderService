@@ -1,4 +1,5 @@
-﻿using MauricioAguilar.OrderService.Entities;
+﻿using MauricioAguilar.OrderService.DTOs;
+using MauricioAguilar.OrderService.Entities;
 
 namespace MauricioAguilar.OrderService.Repositories
 {
@@ -8,6 +9,6 @@ namespace MauricioAguilar.OrderService.Repositories
 
         Task<Order?> GetByIdAsync(int id);
 
-        Task AddAsync(Order order, CancellationToken cancellationToken);
+        Task AddAsync(Order order, List<CreateOrderItemRequest> orderItems, CancellationToken cancellationToken);
     }
 }

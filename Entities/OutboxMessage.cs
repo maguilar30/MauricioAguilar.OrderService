@@ -5,6 +5,7 @@
         public Guid Id { get; set; }
 
         public string MessageType { get; set; } = string.Empty;
+        public string MessageSubType { get; set; } = string.Empty;
         public string Destination { get; set; } = string.Empty;
         public string Payload { get; set; } = string.Empty;
 

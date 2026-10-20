@@ -1,5 +1,5 @@
 ﻿using MauricioAguilar.OrderService.Entities;
-using MauricioAguilar.Product.Service.Data;
+using MauricioAguilar.OrderService.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace MauricioAguilar.OrderService.Messaging
